@@ -1,4 +1,23 @@
-	pub fn has_won(&self) -> char {
+pub fn place_bricka(&self, movi: i64) -> bool {
+		let mut was_valid: bool = false;
+		for i in 0..6 {
+			let x = movi+i*6;
+			if self.board[x as usize] == 'O' or self.board[x as usize] == 'X' {
+				continue;
+			}
+			if self.turn == 0 {self.board[x as usize] = 'O'}
+			else {self.board[x as usize] = 'X'}
+			was_valid = true;
+		}
+		if !was_valid {
+			println!("Invalid Move!");
+			return false;
+		}
+		self.turn = 1-self.turn;
+		return true;
+	}
+
+pub fn has_won(&self) -> char {
 		for i in 0..42 {
 			if self.board[i as usize] != '.' {
 				let x : i64 = i%8;
