@@ -1,3 +1,10 @@
+pub fn new() -> Self {
+		Self {
+			board: ['.', 42],
+			turn: 0, //turn == 0 -> Os tur
+		}
+	}
+
 pub fn place_bricka(&self, movi: i64) -> bool {
 		let mut was_valid: bool = false;
 		for i in 0..6 {
